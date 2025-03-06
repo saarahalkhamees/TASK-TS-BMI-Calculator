@@ -49,12 +49,12 @@ describe("getBMIStateByAge", () => {
       }));
 
     const ageRanges = [
-      { minAge: 19, maxAge: 24, min: 19, max: 24 },
-      { minAge: 25, maxAge: 34, min: 20, max: 25 },
-      { minAge: 35, maxAge: 44, min: 21, max: 26 },
-      { minAge: 45, maxAge: 54, min: 22, max: 27 },
-      { minAge: 55, maxAge: 64, min: 23, max: 28 },
-      { minAge: 65, maxAge: Infinity, min: 24, max: 29 },
+      { minAge: 19, maxAge: 24, minBMI: 19, maxBMI: 24 },
+      { minAge: 25, maxAge: 34, minBMI: 20, maxBMI: 25 },
+      { minAge: 35, maxAge: 44, minBMI: 21, maxBMI: 26 },
+      { minAge: 45, maxAge: 54, minBMI: 22, maxBMI: 27 },
+      { minAge: 55, maxAge: 64, minBMI: 23, maxBMI: 28 },
+      { minAge: 65, maxAge: Infinity, minBMI: 24, maxBMI: 29 },
     ];
 
     for (const { BMI, age } of people) {
@@ -63,7 +63,7 @@ describe("getBMIStateByAge", () => {
       );
 
       expect(getBMIStateByAge(BMI, age)).toBe(
-        BMI < healthyRange!.min || BMI > healthyRange!.max
+        BMI <= healthyRange!.minBMI || BMI >= healthyRange!.maxBMI
           ? "not healthy"
           : "healthy"
       );
