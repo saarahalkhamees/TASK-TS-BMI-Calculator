@@ -32,7 +32,7 @@ function getBMIState(BMI: number): BMIStatus {
     BMIState = "underweight";
   } else if (BMI >= 18.5 && BMI < 25) {
     BMIState = "healthy";
-  } else if (BMI >= 25 && BMI <= 30) {
+  } else if (BMI >= 25 && BMI < 30) {
     BMIState = "overweight";
   } else if (BMI > 30) {
     BMIState = "obese";
@@ -52,16 +52,16 @@ function getBMIState(BMI: number): BMIStatus {
 type HealthStatus = "not healthy" | "healthy";
 
 function getBMIStateByAge(BMI: number, age: number): HealthStatus {
-  // Don't change this variable
   let BMIState: HealthStatus = "not healthy";
-  // Write your code here 👇🏼
-  if (BMI >= 18) {
+
+  // Use BMI classification only for adults
+  if (age >= 18) {
     const status = getBMIState(BMI);
-    if (status == "healthy") {
+    if (status === "healthy") {
       BMIState = "healthy";
     }
   }
-  // Stop making changes here!
+
   return BMIState;
 }
 
